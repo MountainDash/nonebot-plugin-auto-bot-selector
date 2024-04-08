@@ -5,7 +5,7 @@ import nonebot
 from nonebot import logger
 from nonebot.adapters import Bot
 
-from . import adapters
+from . import adapters  # noqa: F401
 from .expection import NoBotFoundError
 from .registries import BOT_CACHE, BOT_CACHE_LOCK, info_current, refresh_bot
 from .target import PlatformTarget

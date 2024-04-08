@@ -4,7 +4,13 @@ from typing import List
 from nonebot.adapters import Bot as BaseBot
 
 from ..registries import PlatformTarget, add_cache, register_list_targets, remove_cache
-from ..target import TargetOB12Unknow, TargetQQGroup, TargetQQGuildChannel, TargetQQPrivate, target_changed
+from ..target import (
+    TargetOB12Unknow,
+    TargetQQGroup,
+    TargetQQGuildChannel,
+    TargetQQPrivate,
+    target_changed,
+)
 
 with suppress(ImportError):
     from nonebot.adapters.onebot.v12 import (
@@ -70,7 +76,9 @@ with suppress(ImportError):
                 for channel in channels:
                     platform = bot.platform
                     if platform == "qqguild":
-                        targets.append(TargetQQGuildChannel(channel_id=int(channel["channel_id"])))
+                        targets.append(
+                            TargetQQGuildChannel(channel_id=int(channel["channel_id"]))
+                        )
                     else:
                         targets.append(
                             TargetOB12Unknow(
@@ -103,4 +111,3 @@ with suppress(ImportError):
     @target_changed.handle()
     async def _(bot: BaseBot, event: FriendDecreaseEvent):
         await remove_cache(bot, TargetQQPrivate(user_id=int(event.user_id)))
-
