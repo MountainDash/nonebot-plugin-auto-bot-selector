@@ -51,7 +51,9 @@ with suppress(ImportError):
                 extra = "allow"
 
     class PagedAPI(Generic[T], Protocol):
-        def __call__(self, *, next_token: Optional[str] = None) -> Awaitable[PageResult[T]]: ...
+        def __call__(
+            self, *, next_token: Optional[str] = None
+        ) -> Awaitable[PageResult[T]]: ...
 
     async def _fetch_all(paged_api: PagedAPI[T]) -> List[T]:
         results = []
@@ -78,15 +80,21 @@ with suppress(ImportError):
             logger.debug(f"Found {len(guilds)} guilds(groups)")
             for guild in guilds:
                 logger.debug(f"featching -> {guild}")
-                channels = await _fetch_all(partial(bot.channel_list, guild_id=guild.id))
+                channels = await _fetch_all(
+                    partial(bot.channel_list, guild_id=guild.id)
+                )
                 for channel in channels:
                     if bot.platform in ["qq", "red", "chronocat"]:
                         target = TargetQQGroup(group_id=int(channel.id))
                     else:
-                        target = TargetSatoriUnknown(platform=bot.platform, channel_id=channel.id)
+                        target = TargetSatoriUnknown(
+                            platform=bot.platform, channel_id=channel.id
+                        )
                     targets.append(target)
         except ActionFailed as e:  # pragma: no cover
-            logger.warning(f"Satori({bot.platform}) does not support fetching channel list: {e}")
+            logger.warning(
+                f"Satori({bot.platform}) does not support fetching channel list: {e}"
+            )
 
         # 获取好友列表
         try:
@@ -98,6 +106,8 @@ with suppress(ImportError):
                     target = TargetSatoriUnknown(platform=bot.platform, user_id=user.id)
                 targets.append(target)
         except ActionFailed as e:  # pragma: no cover
-            logger.warning(f"Satori({bot.platform}) does not support fetching friend list: {e}")
+            logger.warning(
+                f"Satori({bot.platform}) does not support fetching friend list: {e}"
+            )
 
         return targets

@@ -43,7 +43,9 @@ async def refresh_bot(bot: Bot):
     print(list_targets_map)
     if list_targets := list_targets_map.get(adapter_name):
         try:
-            logger.debug(f"executing list targets {list_targets} of adapter {adapter_name}")
+            logger.debug(
+                f"executing list targets {list_targets} of adapter {adapter_name}"
+            )
             targets = await list_targets(bot)
             BOT_CACHE[bot] = set(targets)
         except Exception:
