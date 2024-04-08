@@ -4,11 +4,43 @@ from typing import List
 import nonebot
 from nonebot import logger
 from nonebot.adapters import Bot
+from nonebot.plugin import PluginMetadata
 
 from . import adapters  # noqa: F401
 from .expection import NoBotFoundError
 from .registries import BOT_CACHE, BOT_CACHE_LOCK, info_current, refresh_bot
 from .target import PlatformTarget
+
+try:
+    from importlib.metadata import version
+except ImportError:
+    from importlib_metadata import version
+
+try:
+    __version__ = version("nonebot_plugin_auto_bot_selector")
+except Exception:
+    __version__ = None
+
+__plugin_meta__ = PluginMetadata(
+    name="nonebot-plugin-auto-bot-selector",
+    description="自动Bot选择器，消息推送好帮手",
+    usage="如果你需要主动发送消息，那么这款插件将会免去你找不到合适推送 Bot 的烦恼",
+    homepage="https://github.com/MountainDash/nonebot-plugin-auto-bot-selector",
+    type="library",
+    supported_adapters={
+        "~onebot.v11",
+        "~onebot.v12",
+        "~qq",
+        "~kaiheila",
+        "~red",
+        "~dodo",
+        "~satori",
+    },
+    extra={
+        "author": "Well404",
+        "version": __version__,
+    },
+)
 
 driver = nonebot.get_driver()
 
