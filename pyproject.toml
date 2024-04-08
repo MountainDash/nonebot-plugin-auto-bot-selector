@@ -1,7 +1,7 @@
 [project]
 name = "nonebot-plugin-auto-bot-selector"
-version = "0.2.0"
-description = "Default template for PDM package"
+version = "0.2.1"
+description = "自动Bot选择器，消息推送好帮手"
 authors = [{ name = "Well404", email = "well_404@outlook.com" }]
 dependencies = ["nonebot2>=2.2.1", "typing-extensions>=4.11.0"]
 requires-python = ">=3.8"
