@@ -1,23 +1,24 @@
-try:
-    from nonebot import require
+from nonebot.plugin import on_notice
+from .compat import USE_SAA
 
-    require("nonebot_plugin_saa")
+target_changed = on_notice(block=False)
 
-    from nonebot_plugin_saa.registries import (  # noqa: E402
-        PlatformTarget,  # type: ignore
-        TargetDoDoChannel,  # type: ignore
-        TargetDoDoPrivate,  # type: ignore
-        TargetKaiheilaChannel,  # type: ignore
-        TargetKaiheilaPrivate,  # type: ignore
-        TargetOB12Unknow,  # type: ignore
-        TargetQQGroup,  # type: ignore
-        TargetQQGuildChannel,  # type: ignore
-        TargetQQGuildDirect,  # type: ignore
-        TargetQQPrivate,  # type: ignore
+if USE_SAA:
+    from nonebot_plugin_saa.registries import (
+        PlatformTarget as PlatformTarget,
+        TargetDoDoChannel as TargetDoDoChannel,
+        TargetDoDoPrivate as TargetDoDoPrivate,
+        TargetKaiheilaChannel as TargetKaiheilaChannel,
+        TargetKaiheilaPrivate as TargetKaiheilaPrivate,
+        TargetOB12Unknow as TargetOB12Unknow,
+        TargetQQGroup as TargetQQGroup,
+        TargetQQGuildChannel as TargetQQGuildChannel,
+        TargetQQGuildDirect as TargetQQGuildDirect,
+        TargetQQPrivate as TargetQQPrivate,
+        TargetSatoriUnknown as TargetSatoriUnknown,
     )
 
-
-except ImportError:
+else:
     import json
     from abc import ABC
     from enum import Enum
@@ -30,11 +31,9 @@ except ImportError:
     )
 
     from nonebot.compat import PYDANTIC_V2, ConfigDict, type_validate_python
-    from nonebot.plugin import on_notice
     from pydantic import BaseModel
     from typing_extensions import Self
 
-    target_changed = on_notice(block=False)
 
     class SupportedPlatform(str, Enum):
         qq_group = "QQ Group"

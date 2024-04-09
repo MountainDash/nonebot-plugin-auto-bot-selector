@@ -16,7 +16,7 @@ dev = [
     "nonebot-adapter-dodo>=0.2.1",
     "nonebot-adapter-kaiheila>=0.3.3",
     "nonebot-plugin-alconna>=0.42.3",
-    "nonebot-plugin-send-anything-anywhere>=0.6.0",
+    "nonebot-plugin-send-anything-anywhere>=0.6.1",
 ]
 
 [build-system]
@@ -25,7 +25,7 @@ build-backend = "pdm.backend"
 
 
 [tool.pdm]
-package-type = "library"
+distribution = true
 
 [tool.black]
 line-length = 88
@@ -45,4 +45,4 @@ extra_standard_library = ["typing_extensions"]
 [tool.pyright]
 pythonVersion = "3.8"
 pythonPlatform = "All"
-defineConstant = { PYDANTIC_V2 = true }
+defineConstant = { PYDANTIC_V2 = true, USE_SAA = false}

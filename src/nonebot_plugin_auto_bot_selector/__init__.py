@@ -1,9 +1,6 @@
 from nonebot.plugin import PluginMetadata
 
-try:
-    from importlib.metadata import version
-except ImportError:
-    from importlib_metadata import version  # type: ignore
+from importlib.metadata import version
 
 try:
     __version__ = version("nonebot_plugin_auto_bot_selector")
@@ -31,8 +28,7 @@ __plugin_meta__ = PluginMetadata(
     },
 )
 
-from .expection import NoBotFoundError
-from .main import get_bot, get_bots
+from .compat import get_bot, get_bots, NoBotFoundError
 from .target import (
     PlatformTarget,
     TargetDoDoChannel,
