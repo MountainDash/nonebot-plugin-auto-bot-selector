@@ -6,9 +6,12 @@
 from nonebot import on_message
 from nonebot.exception import ActionFailed
 from nonebot_plugin_alconna.uniseg import Target, UniMessage
-from nonebot_plugin_auto_bot_selector import get_bots
-from nonebot_plugin_auto_bot_selector.expection import NoBotFoundError
-from nonebot_plugin_auto_bot_selector.target import PlatformTarget, TargetQQGroup
+from nonebot_plugin_auto_bot_selector import (
+    NoBotFoundError,
+    PlatformTarget,
+    TargetQQGroup,
+    get_bots,
+)
 from nonebot_plugin_auto_bot_selector.utils.alconna import create_target, extract_target
 
 foo = on_message()
