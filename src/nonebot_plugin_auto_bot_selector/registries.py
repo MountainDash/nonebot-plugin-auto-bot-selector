@@ -1,10 +1,10 @@
-import asyncio
 import json
-from typing import Awaitable, Callable, Dict, List, Set
+import asyncio
+from typing import Set, Dict, List, Callable, Awaitable
 
-from nonebot import logger, get_driver
 from nonebot.adapters import Bot
 from nonebot.compat import model_dump
+from nonebot import logger, get_driver
 
 from .target import PlatformTarget
 
@@ -60,6 +60,7 @@ def info_current():
     for bot, platform_target_set in BOT_CACHE.items():
         log_info[str(bot)] = [model_dump(target) for target in platform_target_set]
     logger.trace(f"current bot-platform_target: {json.dumps(log_info)}")
+
 
 def hook_register():
     driver = get_driver()

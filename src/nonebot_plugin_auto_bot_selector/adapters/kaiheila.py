@@ -1,22 +1,14 @@
-from contextlib import suppress
 from typing import List
+from contextlib import suppress
 
 from nonebot.adapters import Bot as BaseBot
 
 from ..registries import register_list_targets
-from ..target import (
-    PlatformTarget,
-    TargetKaiheilaChannel,
-    TargetKaiheilaPrivate,
-)
+from ..target import PlatformTarget, TargetKaiheilaChannel, TargetKaiheilaPrivate
 
 with suppress(ImportError):
-    from nonebot.adapters.kaiheila import Adapter, Bot
-    from nonebot.adapters.kaiheila.api import (
-        Channel,
-        Guild,
-        UserChat,
-    )
+    from nonebot.adapters.kaiheila import Bot, Adapter
+    from nonebot.adapters.kaiheila.api import Guild, Channel, UserChat
 
     adapter_name = Adapter.get_name()
 

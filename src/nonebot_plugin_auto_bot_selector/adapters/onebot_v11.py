@@ -1,19 +1,19 @@
-from contextlib import suppress
 from typing import List
+from contextlib import suppress
 
 from nonebot.adapters import Bot
 
-from ..registries import PlatformTarget, add_cache, register_list_targets, remove_cache
 from ..target import TargetQQGroup, TargetQQPrivate, target_changed
+from ..registries import PlatformTarget, add_cache, remove_cache, register_list_targets
 
 with suppress(ImportError):
+    from nonebot.adapters.onebot.v11 import Bot as BotOB11
     from nonebot.adapters.onebot.v11 import (
         Adapter,
         FriendAddNoticeEvent,
         GroupDecreaseNoticeEvent,
         GroupIncreaseNoticeEvent,
     )
-    from nonebot.adapters.onebot.v11 import Bot as BotOB11
 
     adapter_name = Adapter.get_name()
 

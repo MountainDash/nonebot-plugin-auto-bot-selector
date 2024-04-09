@@ -1,27 +1,27 @@
-from contextlib import suppress
 from typing import List
+from contextlib import suppress
 
 from nonebot.adapters import Bot as BaseBot
 
-from ..registries import PlatformTarget, add_cache, register_list_targets, remove_cache
+from ..registries import PlatformTarget, add_cache, remove_cache, register_list_targets
 from ..target import (
-    TargetOB12Unknow,
     TargetQQGroup,
-    TargetQQGuildChannel,
     TargetQQPrivate,
+    TargetOB12Unknow,
+    TargetQQGuildChannel,
     target_changed,
 )
 
 with suppress(ImportError):
+    from nonebot.adapters.onebot.v12.exception import UnsupportedAction
     from nonebot.adapters.onebot.v12 import (
-        Adapter,
         Bot,
+        Adapter,
         FriendDecreaseEvent,
         FriendIncreaseEvent,
         GroupMemberDecreaseEvent,
         GroupMemberIncreaseEvent,
     )
-    from nonebot.adapters.onebot.v12.exception import UnsupportedAction
 
     adapter_name = Adapter.get_name()
 

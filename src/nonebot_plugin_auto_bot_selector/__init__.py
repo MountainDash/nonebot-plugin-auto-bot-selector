@@ -1,6 +1,6 @@
-from nonebot.plugin import PluginMetadata
-
 from importlib.metadata import version
+
+from nonebot.plugin import PluginMetadata
 
 try:
     __version__ = version("nonebot_plugin_auto_bot_selector")
@@ -28,18 +28,18 @@ __plugin_meta__ = PluginMetadata(
     },
 )
 
-from .compat import get_bot, get_bots, NoBotFoundError
+from .compat import NoBotFoundError, get_bot, get_bots
 from .target import (
+    TargetQQGroup,
     PlatformTarget,
+    TargetQQPrivate,
+    TargetOB12Unknow,
     TargetDoDoChannel,
     TargetDoDoPrivate,
+    TargetQQGuildDirect,
+    TargetQQGuildChannel,
     TargetKaiheilaChannel,
     TargetKaiheilaPrivate,
-    TargetOB12Unknow,
-    TargetQQGroup,
-    TargetQQGuildChannel,
-    TargetQQGuildDirect,
-    TargetQQPrivate,
 )
 
 __all__ = [
