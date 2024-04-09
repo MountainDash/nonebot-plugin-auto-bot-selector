@@ -1,27 +1,15 @@
-from contextlib import suppress
 from functools import partial
-from typing import (
-    Awaitable,
-    Generic,
-    List,
-    Optional,
-    Protocol,
-    TypeVar,
-)
+from contextlib import suppress
+from typing import List, Generic, TypeVar, Optional, Protocol, Awaitable
 
 from nonebot import logger
-from nonebot.adapters import Bot
-from nonebot.compat import PYDANTIC_V2, ConfigDict
-from nonebot.exception import ActionFailed
 from pydantic import BaseModel
+from nonebot.adapters import Bot
+from nonebot.exception import ActionFailed
+from nonebot.compat import PYDANTIC_V2, ConfigDict
 
 from ..registries import register_list_targets
-from ..target import (
-    PlatformTarget,
-    TargetQQGroup,
-    TargetQQPrivate,
-    TargetSatoriUnknown,
-)
+from ..target import TargetQQGroup, PlatformTarget, TargetQQPrivate, TargetSatoriUnknown
 
 with suppress(ImportError):
     from nonebot.adapters.satori import Adapter
@@ -76,12 +64,12 @@ with suppress(ImportError):
         targets = []
         # 获取群组列表
         try:
-            guilds = await _fetch_all(bot.guild_list) # type: ignore
+            guilds = await _fetch_all(bot.guild_list)  # type: ignore
             logger.debug(f"Found {len(guilds)} guilds(groups)")
             for guild in guilds:
                 logger.debug(f"featching -> {guild}")
                 channels = await _fetch_all(
-                    partial(bot.channel_list, guild_id=guild.id) # type: ignore
+                    partial(bot.channel_list, guild_id=guild.id)  # type: ignore
                 )
                 for channel in channels:
                     if bot.platform in ["qq", "red", "chronocat"]:
@@ -98,7 +86,7 @@ with suppress(ImportError):
 
         # 获取好友列表
         try:
-            users = await _fetch_all(bot.friend_list) # type: ignore
+            users = await _fetch_all(bot.friend_list)  # type: ignore
             for user in users:
                 if bot.platform in ["qq", "red", "chronocat"]:
                     target = TargetQQPrivate(user_id=int(user.id))

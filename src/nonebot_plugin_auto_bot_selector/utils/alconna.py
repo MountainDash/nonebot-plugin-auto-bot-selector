@@ -1,15 +1,15 @@
-from nonebot_plugin_alconna.uniseg import SupportScope, Target
+from nonebot_plugin_alconna.uniseg import Target, SupportScope
 
 from ..target import (
+    TargetQQGroup,
     PlatformTarget,
+    TargetQQPrivate,
     TargetDoDoChannel,
     TargetDoDoPrivate,
+    TargetQQGuildDirect,
+    TargetQQGuildChannel,
     TargetKaiheilaChannel,
     TargetKaiheilaPrivate,
-    TargetQQGroup,
-    TargetQQGuildChannel,
-    TargetQQGuildDirect,
-    TargetQQPrivate,
 )
 
 

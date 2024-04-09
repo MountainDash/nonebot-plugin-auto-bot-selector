@@ -1,13 +1,10 @@
-from contextlib import suppress
 from typing import List
+from contextlib import suppress
 
 from nonebot.adapters import Bot as BaseBot
 
 from ..registries import register_list_targets
-from ..target import (
-    PlatformTarget,
-    TargetDoDoChannel,
-)
+from ..target import PlatformTarget, TargetDoDoChannel
 
 with suppress(ImportError):
     from nonebot.adapters.dodo import Adapter

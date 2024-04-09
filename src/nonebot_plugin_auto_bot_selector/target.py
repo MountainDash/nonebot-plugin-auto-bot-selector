@@ -1,39 +1,37 @@
 from nonebot.plugin import on_notice
+
 from .compat import USE_SAA
 
 target_changed = on_notice(block=False)
 
 if USE_SAA:
+    from nonebot_plugin_saa.registries import TargetQQGroup as TargetQQGroup
+    from nonebot_plugin_saa.registries import PlatformTarget as PlatformTarget
+    from nonebot_plugin_saa.registries import TargetQQPrivate as TargetQQPrivate
+    from nonebot_plugin_saa.registries import TargetOB12Unknow as TargetOB12Unknow
+    from nonebot_plugin_saa.registries import TargetDoDoChannel as TargetDoDoChannel
+    from nonebot_plugin_saa.registries import TargetDoDoPrivate as TargetDoDoPrivate
+    from nonebot_plugin_saa.registries import TargetQQGuildDirect as TargetQQGuildDirect
+    from nonebot_plugin_saa.registries import TargetSatoriUnknown as TargetSatoriUnknown
     from nonebot_plugin_saa.registries import (
-        PlatformTarget as PlatformTarget,
-        TargetDoDoChannel as TargetDoDoChannel,
-        TargetDoDoPrivate as TargetDoDoPrivate,
-        TargetKaiheilaChannel as TargetKaiheilaChannel,
-        TargetKaiheilaPrivate as TargetKaiheilaPrivate,
-        TargetOB12Unknow as TargetOB12Unknow,
-        TargetQQGroup as TargetQQGroup,
         TargetQQGuildChannel as TargetQQGuildChannel,
-        TargetQQGuildDirect as TargetQQGuildDirect,
-        TargetQQPrivate as TargetQQPrivate,
-        TargetSatoriUnknown as TargetSatoriUnknown,
+    )
+    from nonebot_plugin_saa.registries import (
+        TargetKaiheilaChannel as TargetKaiheilaChannel,
+    )
+    from nonebot_plugin_saa.registries import (
+        TargetKaiheilaPrivate as TargetKaiheilaPrivate,
     )
 
 else:
     import json
     from abc import ABC
     from enum import Enum
-    from typing import (
-        Any,
-        ClassVar,
-        Dict,
-        Literal,
-        Optional,
-    )
-
-    from nonebot.compat import PYDANTIC_V2, ConfigDict, type_validate_python
-    from pydantic import BaseModel
     from typing_extensions import Self
+    from typing import Any, Dict, Literal, ClassVar, Optional
 
+    from pydantic import BaseModel
+    from nonebot.compat import PYDANTIC_V2, ConfigDict, type_validate_python
 
     class SupportedPlatform(str, Enum):
         qq_group = "QQ Group"

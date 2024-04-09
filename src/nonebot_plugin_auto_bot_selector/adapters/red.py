@@ -1,15 +1,13 @@
-from contextlib import suppress
 from typing import List
+from contextlib import suppress
 
 from nonebot.adapters import Bot
 
-from ..registries import PlatformTarget, register_list_targets
 from ..target import TargetQQGroup, TargetQQPrivate
+from ..registries import PlatformTarget, register_list_targets
 
 with suppress(ImportError):
-    from nonebot.adapters.red import (
-        Adapter,
-    )
+    from nonebot.adapters.red import Adapter
     from nonebot.adapters.red import Bot as BotRed
 
     adapter_name = Adapter.get_name()
