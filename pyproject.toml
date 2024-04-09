@@ -16,6 +16,7 @@ dev = [
     "nonebot-adapter-dodo>=0.2.1",
     "nonebot-adapter-kaiheila>=0.3.3",
     "nonebot-plugin-alconna>=0.42.3",
+    "nonebot-plugin-send-anything-anywhere>=0.6.0",
 ]
 
 [build-system]
