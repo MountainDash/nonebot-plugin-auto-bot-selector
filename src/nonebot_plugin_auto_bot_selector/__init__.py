@@ -43,8 +43,6 @@ from .target import (
 )
 
 __all__ = [
-    "get_bot",
-    "get_bots",
     "NoBotFoundError",
     "PlatformTarget",
     "TargetDoDoChannel",
@@ -56,4 +54,6 @@ __all__ = [
     "TargetQQGuildChannel",
     "TargetQQGuildDirect",
     "TargetQQPrivate",
+    "get_bot",
+    "get_bots",
 ]
