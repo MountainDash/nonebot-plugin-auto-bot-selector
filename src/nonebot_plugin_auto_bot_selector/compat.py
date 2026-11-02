@@ -1,9 +1,8 @@
 from random import random
 from typing import Set, Dict, List, cast
 
-from nonebot import get_driver
 from nonebot.adapters import Bot
-from nonebot import logger, require
+from nonebot import logger, require, get_driver
 from nonebot import get_bots as nonebot_get_bots
 
 from .registries import PlatformTarget

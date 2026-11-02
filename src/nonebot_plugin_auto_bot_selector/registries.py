@@ -3,8 +3,8 @@ import asyncio
 from typing import Set, Dict, List, Callable, Awaitable
 
 from nonebot.adapters import Bot
-from nonebot.compat import model_dump
 from nonebot import logger, get_driver
+from nonebot.compat import model_dump
 
 from .target import PlatformTarget
 
